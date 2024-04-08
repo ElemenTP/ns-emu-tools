@@ -34,7 +34,10 @@ jobs:
         venv\Scripts\activate.ps1
         pip install poetry
         poetry install
-        poetry run pyinstaller --noconfirm --onefile --windowed --icon "./web/favicon.ico" --add-data "./module/*.exe;./module/" --add-data "./web;web/" --additional-hooks-dir=".\\hooks" "./main_devnull.py" --name "NsEmuTools"
+        poetry run pyinstaller --noconfirm --onedir --windowed --icon "./web/favicon.ico" --add-data "./module/*.exe;./module/" --add-data "./web;web/" --additional-hooks-dir=".\\hooks" "./main_devnull.py" --name "NsEmuTools"
+#        cd dist
+#        7z a NsEmuTools.7z NsEmuTools\
+#        Remove-Item -Recurse -Force NsEmuTools\
     - uses: actions/upload-artifact@v4
       with:
         path: dist/*
